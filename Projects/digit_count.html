@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cyberpunk Digit Counter</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at center, #0f0f0f, #000000);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: rgba(0, 0, 0, 0.8);
+      border: 2px solid #00ffe5;
+      border-radius: 12px;
+      padding: 30px 25px;
+      box-shadow: 0 0 20px #00ffe5, 0 0 40px #ff00ff;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .container h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #00ffe5;
+      text-shadow: 0 0 8px #00ffe5;
+    }
+
+    .container input {
+      width: 100%;
+      padding: 12px;
+      font-size: 18px;
+      background-color: #111;
+      border: 2px solid #ff00ff;
+      color: #fff;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      outline: none;
+      box-shadow: 0 0 10px #ff00ff;
+    }
+
+    .container input:focus {
+      border-color: #00ffe5;
+      box-shadow: 0 0 15px #00ffe5;
+    }
+
+    .container button {
+      background: linear-gradient(90deg, #ff00ff, #00ffe5);
+      border: none;
+      color: #000;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      font-weight: bold;
+      width: 100%;
+    }
+
+    .container button:hover {
+      opacity: 0.85;
+      box-shadow: 0 0 15px #00ffe5;
+    }
+
+    .container p {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #fff;
+      text-shadow: 0 0 10px #ff00ff;
+      min-height: 24px;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 20px 15px;
+      }
+
+      .container h2 {
+        font-size: 20px;
+      }
+
+      .container input, .container button {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🔮 Cyberpunk Digit Counter 🔢</h2>
+    <input type="number" id="numberInput" placeholder="Enter a number">
+    <button onclick="countDigits()">Count Digits</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    function countDigits() {
+      var n = document.getElementById("numberInput").value;
+      n = parseInt(n);
+
+      let result = document.getElementById("result");
+
+      if (isNaN(n)) {
+        result.innerText = "⚠️ Enter a valid number!";
+        return;
+      }
+
+      var count = 0;
+      if (n === 0) count = 1;
+      else {
+        n = Math.abs(n);
+        while (n > 0) {
+          count++;
+          n = Math.floor(n / 10);
+        }
+      }
+
+      result.innerText = "💡 Number of digits: " + count;
+    }
+  </script>
+</body>
+</html>
