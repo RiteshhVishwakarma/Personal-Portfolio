@@ -134,25 +134,31 @@ button.dark-mode {
 
 li.dark-mode {
   background-color: #444;
-  color: #ddd;
-}
-
-li.completed.dark-mode {
-  background-color: #555;
-  color: #bbb;
-}
-
-li button.dark-mode {
-  background-color: #ff6347;
-}
-
-/* Dark Mode styles for list items */
-li.dark-mode {
-  background-color: #444;
   color: #ddd; /* Updated font color */
 }
 
 li.completed.dark-mode {
   background-color: #555;
   color: #bbb; /* Updated font color */
+}
+
+li button.dark-mode {
+  background-color: #ff6347;
+}
+
+/* Additional styles for task priority */
+select, input[type="date"] {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  margin-right: 10px;
+}
+
+select {
+  width: 120px;
+}
+
+input[type="date"] {
+  width: 150px;
 }

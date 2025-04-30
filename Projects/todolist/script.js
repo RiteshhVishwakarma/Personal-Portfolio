@@ -22,19 +22,28 @@ function toggleDarkMode() {
 
 function addTask() {
   const taskText = taskInput.value.trim();
+  const deadline = document.getElementById("deadlineInput").value;
+  const priority = document.getElementById("priorityInput").value;
+
   if (taskText === "") return;
 
-  const li = createTaskElement(taskText);
+  const li = createTaskElement(taskText, deadline, priority);
   taskList.appendChild(li);
-  saveTask(taskText);
+  saveTask(taskText, deadline, priority);
 
   taskInput.value = "";
+  document.getElementById("deadlineInput").value = "";
+  document.getElementById("priorityInput").value = "Low";
 }
 
-function createTaskElement(text) {
+function createTaskElement(text, deadline, priority) {
   const li = document.createElement("li");
+  li.classList.add(priority.toLowerCase());
 
-  li.textContent = text;
+  const taskInfo = document.createElement("span");
+  taskInfo.textContent = `${text} - Due: ${deadline} | Priority: ${priority}`;
+  li.appendChild(taskInfo);
+
   li.addEventListener("click", () => {
     li.classList.toggle("completed");
     updateStorage();
@@ -52,9 +61,9 @@ function createTaskElement(text) {
   return li;
 }
 
-function saveTask(taskText) {
+function saveTask(taskText, deadline, priority) {
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-  tasks.push({ text: taskText, completed: false });
+  tasks.push({ text: taskText, deadline: deadline, priority: priority, completed: false });
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
@@ -64,6 +73,8 @@ function updateStorage() {
     allTasks.push({
       text: li.childNodes[0].nodeValue.trim(),
       completed: li.classList.contains("completed"),
+      deadline: li.querySelector('span').textContent.split(" - Due: ")[1].split(" |")[0],
+      priority: li.className,
     });
   });
   localStorage.setItem("tasks", JSON.stringify(allTasks));
