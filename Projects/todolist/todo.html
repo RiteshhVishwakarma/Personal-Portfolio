@@ -8,9 +8,17 @@
 </head>
 <body>
   <div class="container">
-    <h1>Stay Focused, Student!</h1>
-    <p class="quote">“One task at a time. Let’s crush it 💪”</p>
-    
+    <h1>🎯 Stay Focused, Student!</h1>
+    <p class="quote" id="quote">Loading motivational quote...</p>
+
+    <!-- Dark Mode Toggle -->
+    <div class="theme-toggle">
+      <label>
+        <input type="checkbox" id="themeToggle" />
+        Dark Mode
+      </label>
+    </div>
+
     <div class="input-section">
       <input type="text" id="taskInput" placeholder="e.g. Revise Arrays in Java" />
       <button onclick="addTask()">Add</button>

@@ -1,7 +1,24 @@
+// Existing functions for task handling
 const taskInput = document.getElementById("taskInput");
 const taskList = document.getElementById("taskList");
+const themeToggle = document.getElementById("themeToggle");
 
 document.addEventListener("DOMContentLoaded", loadTasks);
+
+// Add dark mode toggle functionality
+themeToggle.addEventListener("change", toggleDarkMode);
+
+function toggleDarkMode() {
+  const body = document.body;
+  const container = document.querySelector('.container');
+  const tasks = document.querySelectorAll('li');
+  const buttons = document.querySelectorAll('button');
+
+  body.classList.toggle("dark-mode");
+  container.classList.toggle("dark-mode");
+  tasks.forEach(task => task.classList.toggle("dark-mode"));
+  buttons.forEach(btn => btn.classList.toggle("dark-mode"));
+}
 
 function addTask() {
   const taskText = taskInput.value.trim();
@@ -59,4 +76,15 @@ function loadTasks() {
     if (task.completed) li.classList.add("completed");
     taskList.appendChild(li);
   });
+
+  // Check if dark mode was saved
+  if (localStorage.getItem("darkMode") === "true") {
+    themeToggle.checked = true;
+    toggleDarkMode();
+  }
 }
+
+// Saving dark mode state
+themeToggle.addEventListener("change", () => {
+  localStorage.setItem("darkMode", themeToggle.checked);
+});

@@ -1,110 +1,158 @@
-* {
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f0f2f5;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-  }
-  
-  .container {
-    background: #fff;
-    margin-top: 50px;
-    padding: 2rem;
-    width: 90%;
-    max-width: 500px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  }
-  
-  h1 {
-    text-align: center;
-    color: #00adb5;
-    margin-bottom: 0.5rem;
-  }
-  
-  .quote {
-    text-align: center;
-    font-size: 0.95rem;
-    color: #555;
-    margin-bottom: 1.5rem;
-  }
-  
+/* Default light mode styles */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f0f2f5;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+  background: #fff;
+  margin-top: 50px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+}
+
+h1 {
+  text-align: center;
+  color: #00adb5;
+  margin-bottom: 0.5rem;
+}
+
+.quote {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.input-section {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+button {
+  padding: 12px 18px;
+  border: none;
+  background-color: #00adb5;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #007c85;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.2rem;
+}
+
+li {
+  background-color: #f7f7f7;
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  word-break: break-word;
+  transition: all 0.2s ease;
+}
+
+li.completed {
+  text-decoration: line-through;
+  color: #999;
+  background-color: #e3e3e3;
+}
+
+li button {
+  background-color: crimson;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.theme-toggle {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 500px) {
   .input-section {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+    flex-direction: column;
   }
-  
-  input {
-    flex: 1;
-    padding: 12px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-  }
-  
+
   button {
-    padding: 12px 18px;
-    border: none;
-    background-color: #00adb5;
-    color: white;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.3s;
+    width: 50%;
   }
-  
-  button:hover {
-    background-color: #007c85;
-  }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 1.2rem;
-  }
-  
-  li {
-    background-color: #f7f7f7;
-    margin-top: 10px;
-    padding: 12px;
-    border-radius: 6px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    word-break: break-word;
-    transition: all 0.2s ease;
-  }
-  
-  li.completed {
-    text-decoration: line-through;
-    color: #999;
-    background-color: #e3e3e3;
-  }
-  
-  li button {
-    background-color: crimson;
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.9rem;
-  }
-  
-  @media screen and (max-width: 500px) {
-    .input-section {
-      flex-direction: column;
-    }
-  
-    button {
-      width: 50%;
-    }
-  }
-  
+}
+
+/* Dark Mode styles */
+body.dark-mode {
+  background-color: #1f1f1f;
+  color: white;
+}
+
+.container.dark-mode {
+  background: #333;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+h1.dark-mode {
+  color: #00bfae;
+}
+
+button.dark-mode {
+  background-color: #007c85;
+}
+
+li.dark-mode {
+  background-color: #444;
+  color: #ddd;
+}
+
+li.completed.dark-mode {
+  background-color: #555;
+  color: #bbb;
+}
+
+li button.dark-mode {
+  background-color: #ff6347;
+}
+
+/* Dark Mode styles for list items */
+li.dark-mode {
+  background-color: #444;
+  color: #ddd; /* Updated font color */
+}
+
+li.completed.dark-mode {
+  background-color: #555;
+  color: #bbb; /* Updated font color */
+}
